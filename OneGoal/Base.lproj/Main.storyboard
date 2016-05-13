@@ -63,6 +63,7 @@
                                     <color key="titleColor" red="0.16862745098039217" green="0.1764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="doneButtonPressed:" destination="yFS-F7-2En" eventType="touchUpInside" id="0TN-le-g0t"/>
                                     <action selector="nextButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HLW-qg-mZA"/>
                                 </connections>
                             </button>

@@ -10,4 +10,6 @@
 
 @interface OGCreateAlertViewController : BSBaseViewController
 
+@property (nonatomic, copy) dispatch_block_t setUpCompleteBlock;
+
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="W2y-lJ-TbM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ml8-sw-0z8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,7 +8,7 @@
         <!--Create Goal View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="OGCreateGoalViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OGCreateGoalViewController" id="BYZ-38-t0r" customClass="OGCreateGoalViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,15 +47,32 @@
             </objects>
             <point key="canvasLocation" x="245" y="527"/>
         </scene>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="E54-Oz-dJS">
+            <objects>
+                <navigationController id="ml8-sw-0z8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5yj-b4-WOj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="W2y-lJ-TbM" kind="relationship" relationship="rootViewController" id="9EZ-sq-UW3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVM-TV-zwx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-281" y="1258"/>
+        </scene>
+        <!--Home View Controller-->
         <scene sceneID="SWM-We-bBK">
             <objects>
-                <viewController id="W2y-lJ-TbM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OGHomeViewController" id="W2y-lJ-TbM" customClass="OGHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gBC-7b-rnj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.58431372550000005" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aMS-Og-jb8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqt-FB-VbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

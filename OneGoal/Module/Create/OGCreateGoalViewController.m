@@ -51,8 +51,7 @@
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
-    OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
-    [self showViewController:alertVC sender:nil];
+    [self saveData];
 }
     
 - (void)saveData
@@ -73,6 +72,7 @@
         [NSException raise:@"访问数据库错误" format:@"%@", [error localizedDescription]];
     }else {
         NSLog(@"SUCCESS!");
+        [self gotoCreateAlertVC];
     }
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -85,6 +85,16 @@
         NSLog(@"%@", [obj valueForKey:@"name"]);
         NSLog(@"%@", [obj valueForKey:@"createTime"]);
     }
+}
+
+- (void)gotoCreateAlertVC
+{
+    __weak typeof(self) weakSelf = self;
+    OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
+    alertVC.setUpCompleteBlock = ^{
+        [weakSelf dismissViewControllerAnimated:NO completion:nil];
+    };
+    [self showViewController:alertVC sender:nil];
 }
 
 @end

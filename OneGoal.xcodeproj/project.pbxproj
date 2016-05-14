@@ -10,6 +10,7 @@
 		5ED265715400029E594F4DC3 /* Pods_OneGoal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFC5912B7B1F015249D8C9A /* Pods_OneGoal.framework */; };
 		8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */; };
 		8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */; };
+		8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */; };
 		8E81E5461CE4634300280B25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81E5451CE4634300280B25 /* main.m */; };
 		8E81E5491CE4634300280B25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81E5481CE4634300280B25 /* AppDelegate.m */; };
 		8E81E54F1CE4634300280B25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E81E54D1CE4634300280B25 /* Main.storyboard */; };
@@ -74,6 +75,8 @@
 		8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneGoalPalette.m; sourceTree = "<group>"; };
 		8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateAlertViewController.h; sourceTree = "<group>"; };
 		8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGCreateAlertViewController.m; sourceTree = "<group>"; };
+		8E2A6D1E1CE6FBFB002FEF26 /* OGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGHomeViewController.h; path = Main/OGHomeViewController.h; sourceTree = "<group>"; };
+		8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGHomeViewController.m; path = Main/OGHomeViewController.m; sourceTree = "<group>"; };
 		8E81E5411CE4634300280B25 /* OneGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E81E5451CE4634300280B25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E81E5471CE4634300280B25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,7 +154,7 @@
 		8E81E7CB1CE46ECE00280B25 /* Goal+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Goal+CoreDataProperties.m"; sourceTree = "<group>"; };
 		8E81E7CC1CE46ECE00280B25 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goal.h; sourceTree = "<group>"; };
 		8E81E7CD1CE46ECE00280B25 /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goal.m; sourceTree = "<group>"; };
-		8E81E7D01CE490E700280B25 /* OneGoal 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OneGoal 2.xcdatamodel"; sourceTree = "<group>"; };
+		8E81E7D01CE490E700280B25 /* OneGoal 2.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = "OneGoal 2.xcdatamodel"; sourceTree = "<group>"; };
 		BDFC5912B7B1F015249D8C9A /* Pods_OneGoal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneGoal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -197,6 +200,15 @@
 				8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		8E2A6D1D1CE6FBB4002FEF26 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A6D1E1CE6FBFB002FEF26 /* OGHomeViewController.h */,
+				8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		8E81E5381CE4634300280B25 = {
@@ -380,6 +392,7 @@
 		8E81E7C41CE46A5200280B25 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				8E2A6D1D1CE6FBB4002FEF26 /* Main */,
 				8E81E7C51CE46A5200280B25 /* Create */,
 			);
 			path = Module;
@@ -624,6 +637,7 @@
 				8E81E5D11CE4636100280B25 /* UIView+LayerMethods.m in Sources */,
 				8E81E5D21CE4636100280B25 /* UIViewController+Helper.m in Sources */,
 				8E81E5C11CE4636100280B25 /* BSJSONWrapper.m in Sources */,
+				8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */,
 				8E81E5C31CE4636100280B25 /* NSArray+Util.m in Sources */,
 				8E81E5BD1CE4636100280B25 /* BSAPIResult.m in Sources */,
 				8E81E5C91CE4636100280B25 /* UIButton+Extension.m in Sources */,

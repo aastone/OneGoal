@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ED265715400029E594F4DC3 /* Pods_OneGoal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFC5912B7B1F015249D8C9A /* Pods_OneGoal.framework */; };
+		8E0761891CE9ABE200CE63DE /* OGChooseDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761881CE9ABE200CE63DE /* OGChooseDaysViewController.m */; };
 		8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */; };
 		8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */; };
 		8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */; };
@@ -71,6 +72,8 @@
 /* Begin PBXFileReference section */
 		169B91C67362B4030E084233 /* Pods-OneGoal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneGoal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneGoal/Pods-OneGoal.debug.xcconfig"; sourceTree = "<group>"; };
 		3F45B27D25DC77E0452EF0D7 /* Pods-OneGoal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneGoal.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneGoal/Pods-OneGoal.release.xcconfig"; sourceTree = "<group>"; };
+		8E0761871CE9ABE200CE63DE /* OGChooseDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGChooseDaysViewController.h; sourceTree = "<group>"; };
+		8E0761881CE9ABE200CE63DE /* OGChooseDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGChooseDaysViewController.m; sourceTree = "<group>"; };
 		8E2417F21CE57F92005E04F7 /* OneGoalPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneGoalPalette.h; sourceTree = "<group>"; };
 		8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneGoalPalette.m; sourceTree = "<group>"; };
 		8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateAlertViewController.h; sourceTree = "<group>"; };
@@ -403,6 +406,8 @@
 			children = (
 				8E81E7C61CE46AC900280B25 /* OGCreateGoalViewController.h */,
 				8E81E7C71CE46AC900280B25 /* OGCreateGoalViewController.m */,
+				8E0761871CE9ABE200CE63DE /* OGChooseDaysViewController.h */,
+				8E0761881CE9ABE200CE63DE /* OGChooseDaysViewController.m */,
 				8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */,
 				8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */,
 			);
@@ -630,6 +635,7 @@
 				8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */,
 				8E81E5D31CE4636100280B25 /* BSLoadStatusView.m in Sources */,
 				8E81E5BE1CE4636100280B25 /* BSHTTPAPIManager.m in Sources */,
+				8E0761891CE9ABE200CE63DE /* OGChooseDaysViewController.m in Sources */,
 				8E81E7CE1CE46ECE00280B25 /* Goal+CoreDataProperties.m in Sources */,
 				8E81E5521CE4634300280B25 /* OneGoal.xcdatamodeld in Sources */,
 				8E81E5CA1CE4636100280B25 /* UIColor+Tools.m in Sources */,

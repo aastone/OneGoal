@@ -35,6 +35,18 @@
     [self queryInfo];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSArray *arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    if (arr.count) {
+        NSLog(@"%@", arr);
+        UILocalNotification *noti = arr[0];
+        NSLog(@"%@", noti.fireDate);
+    }
+}
+
 - (void)createUI
 {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];

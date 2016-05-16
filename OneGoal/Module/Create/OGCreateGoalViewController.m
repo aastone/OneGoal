@@ -34,20 +34,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return YES;
+}
+
+#pragma mark - Actions
+
+- (IBAction)closeButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
@@ -74,17 +70,18 @@
         NSLog(@"SUCCESS!");
         [self gotoCreateAlertVC];
     }
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *user = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
-    [request setEntity:user];
-    NSArray *result = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"%@", result);
-    
-    for (NSManagedObject *obj in result) {
-        NSLog(@"%@", [obj valueForKey:@"name"]);
-        NSLog(@"%@", [obj valueForKey:@"createTime"]);
-    }
+
+    // 查询
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *user = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
+//    [request setEntity:user];
+//    NSArray *result = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
+//    NSLog(@"%@", result);
+//    
+//    for (NSManagedObject *obj in result) {
+//        NSLog(@"%@", [obj valueForKey:@"name"]);
+//        NSLog(@"%@", [obj valueForKey:@"createTime"]);
+//    }
 }
 
 - (void)gotoCreateAlertVC

@@ -7,8 +7,10 @@
 //
 
 #import "OGCreateAlertViewController.h"
+#import "NSDate+TimeUtil.h"
 
 @interface OGCreateAlertViewController ()
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -17,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.datePicker.timeZone = [NSTimeZone defaultTimeZone];
     
     if (self.setUpCompleteBlock) {
         self.setUpCompleteBlock();
@@ -29,32 +33,41 @@
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
-    
-    NSArray *arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    if (arr.count) {
-        NSLog(@"%ld", arr.count);
-    }
-    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     UILocalNotification *localAlert = [[UILocalNotification alloc] init];
     if (localAlert) {
-        NSDate *now = [NSDate new];
-        localAlert.fireDate = [now dateByAddingTimeInterval:10];
-        localAlert.repeatInterval = 0;
+        localAlert.fireDate = [self dateBySelectDayInWeek:@1 withDate:self.datePicker.date];
+        localAlert.repeatInterval = NSCalendarUnitWeekOfYear; //每周同一时间提醒
         localAlert.timeZone = [NSTimeZone defaultTimeZone];
         localAlert.soundName = UILocalNotificationDefaultSoundName;
         localAlert.alertTitle = @"alertTitle";
         localAlert.alertBody = @"alertBody";
         localAlert.alertAction = @"alertAction";
         localAlert.hasAction = YES;
+        localAlert.userInfo = [NSDictionary dictionaryWithObject:@"alertTime1" forKey:@"alertTime1"];
+        
+        //另外要设置多个星期，根据上个页面选择的提醒日
+        
     }
-    [[UIApplication sharedApplication] presentLocalNotificationNow:localAlert];
     [[UIApplication sharedApplication] scheduleLocalNotification:localAlert];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+- (NSDate *)dateBySelectDayInWeek:(NSNumber *)day withDate:(NSDate *)date
+{
+    NSNumber *currentDay = [NSDate currentDayInWeek:nil];
+    if ([day isEqualToNumber:currentDay]) {
+        return date;
+    }
+    
+    if (day.integerValue > currentDay.integerValue) {
+        return [date dateByAddingTimeInterval:24*60*60*(day.integerValue - currentDay.integerValue)];
+    }else {
+        return [date dateByAddingTimeInterval:24*60*60*(day.integerValue - currentDay.integerValue + 7)];
+    }
+}
 
 
 

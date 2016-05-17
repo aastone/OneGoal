@@ -34,6 +34,11 @@ UIColor *colorFromRGB(NSInteger rgbValue) {
     return colorFromRGB(0x2B2D2E);
 }
 
++ (UIColor *)buttonTextColorYellow
+{
+    return colorFromRGB(0xFFFBDF);
+}
+
 + (NSString *)paletteName
 {
     return @"Main Palette";

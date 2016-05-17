@@ -8,9 +8,20 @@
 
 #import "OGCreateAlertViewController.h"
 #import "NSDate+TimeUtil.h"
+#import "UIButton+Extension.h"
 
 @interface OGCreateAlertViewController ()
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIButton *allButton;
+@property (weak, nonatomic) IBOutlet UIButton *monButton;
+@property (weak, nonatomic) IBOutlet UIButton *tueButton;
+@property (weak, nonatomic) IBOutlet UIButton *wenButton;
+@property (weak, nonatomic) IBOutlet UIButton *thuButton;
+@property (weak, nonatomic) IBOutlet UIButton *friButton;
+@property (weak, nonatomic) IBOutlet UIButton *satButton;
+@property (weak, nonatomic) IBOutlet UIButton *sunButton;
+
+@property (nonatomic, strong) NSArray<UIButton*> *buttons;
 
 @end
 
@@ -19,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.buttons = @[_monButton, _tueButton, _wenButton, _thuButton, _friButton, _satButton, _sunButton];
     
     self.datePicker.timeZone = [NSTimeZone defaultTimeZone];
     
@@ -31,6 +44,41 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Actions
+- (IBAction)allButtonPressed:(UIButton *)sender {
+    [UIButton setAllButtonSelectedOrUnselected:_allButton withButtons:self.buttons];
+}
+
+- (IBAction)monButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+- (IBAction)tueButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+- (IBAction)wenButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+- (IBAction)thuButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+- (IBAction)friButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+- (IBAction)satButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+- (IBAction)sunButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+}
+
+
 
 - (IBAction)doneButtonPressed:(id)sender {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];

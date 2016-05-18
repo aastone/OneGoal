@@ -10,6 +10,9 @@
 		5ED265715400029E594F4DC3 /* Pods_OneGoal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFC5912B7B1F015249D8C9A /* Pods_OneGoal.framework */; };
 		8E0761891CE9ABE200CE63DE /* OGChooseDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761881CE9ABE200CE63DE /* OGChooseDaysViewController.m */; };
 		8E07618C1CEC0F3000CE63DE /* OGCreateGoalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E07618B1CEC0F3000CE63DE /* OGCreateGoalViewModel.m */; };
+		8E0761901CEC575E00CE63DE /* OGHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E07618E1CEC575E00CE63DE /* OGHomeTableViewCell.m */; };
+		8E0761911CEC575E00CE63DE /* OGHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */; };
+		8E0761941CEC593200CE63DE /* OGHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761931CEC593200CE63DE /* OGHomeViewModel.m */; };
 		8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */; };
 		8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */; };
 		8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */; };
@@ -77,6 +80,11 @@
 		8E0761881CE9ABE200CE63DE /* OGChooseDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGChooseDaysViewController.m; sourceTree = "<group>"; };
 		8E07618A1CEC0F3000CE63DE /* OGCreateGoalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateGoalViewModel.h; sourceTree = "<group>"; };
 		8E07618B1CEC0F3000CE63DE /* OGCreateGoalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGCreateGoalViewModel.m; sourceTree = "<group>"; };
+		8E07618D1CEC575E00CE63DE /* OGHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGHomeTableViewCell.h; path = Main/OGHomeTableViewCell.h; sourceTree = "<group>"; };
+		8E07618E1CEC575E00CE63DE /* OGHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGHomeTableViewCell.m; path = Main/OGHomeTableViewCell.m; sourceTree = "<group>"; };
+		8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OGHomeTableViewCell.xib; path = Main/OGHomeTableViewCell.xib; sourceTree = "<group>"; };
+		8E0761921CEC593200CE63DE /* OGHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGHomeViewModel.h; path = Main/OGHomeViewModel.h; sourceTree = "<group>"; };
+		8E0761931CEC593200CE63DE /* OGHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGHomeViewModel.m; path = Main/OGHomeViewModel.m; sourceTree = "<group>"; };
 		8E2417F21CE57F92005E04F7 /* OneGoalPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneGoalPalette.h; sourceTree = "<group>"; };
 		8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneGoalPalette.m; sourceTree = "<group>"; };
 		8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateAlertViewController.h; sourceTree = "<group>"; };
@@ -213,6 +221,11 @@
 			children = (
 				8E2A6D1E1CE6FBFB002FEF26 /* OGHomeViewController.h */,
 				8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */,
+				8E0761921CEC593200CE63DE /* OGHomeViewModel.h */,
+				8E0761931CEC593200CE63DE /* OGHomeViewModel.m */,
+				8E07618D1CEC575E00CE63DE /* OGHomeTableViewCell.h */,
+				8E07618E1CEC575E00CE63DE /* OGHomeTableViewCell.m */,
+				8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -547,6 +560,7 @@
 			files = (
 				8E81E5571CE4634300280B25 /* LaunchScreen.storyboard in Resources */,
 				8E81E5541CE4634300280B25 /* Assets.xcassets in Resources */,
+				8E0761911CEC575E00CE63DE /* OGHomeTableViewCell.xib in Resources */,
 				8E81E54F1CE4634300280B25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +642,7 @@
 				8E81E5BC1CE4636100280B25 /* BSAPIRequest.m in Sources */,
 				8E81E5D01CE4636100280B25 /* UIView+Helper.m in Sources */,
 				8E07618C1CEC0F3000CE63DE /* OGCreateGoalViewModel.m in Sources */,
+				8E0761901CEC575E00CE63DE /* OGHomeTableViewCell.m in Sources */,
 				8E81E5C71CE4636100280B25 /* NSString+Util.m in Sources */,
 				8E81E5C61CE4636100280B25 /* NSNumber+Util.m in Sources */,
 				8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */,
@@ -650,6 +665,7 @@
 				8E81E5D21CE4636100280B25 /* UIViewController+Helper.m in Sources */,
 				8E81E5C11CE4636100280B25 /* BSJSONWrapper.m in Sources */,
 				8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */,
+				8E0761941CEC593200CE63DE /* OGHomeViewModel.m in Sources */,
 				8E81E5C31CE4636100280B25 /* NSArray+Util.m in Sources */,
 				8E81E5BD1CE4636100280B25 /* BSAPIResult.m in Sources */,
 				8E81E5C91CE4636100280B25 /* UIButton+Extension.m in Sources */,

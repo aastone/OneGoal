@@ -10,14 +10,24 @@
 #import "OGCreateGoalViewController.h"
 #import "AppDelegate.h"
 #import "UIViewController+Helper.h"
+#import "BSLoadStatusView.h"
+#import "OGHomeTableViewCell.h"
+#import "OGHomeViewModel.h"
+#import "Goal.h"
+#import "NSDate+TimeUtil.h"
+#import "SVPullToRefresh.h"
 
-@interface OGHomeViewController()
+@interface OGHomeViewController()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) AppDelegate *myAppDelegate;
+
+DECLARE_VIEWMODEL(OGHomeViewModel)
 
 @end
 
 @implementation OGHomeViewController
+
+DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 
 #pragma mark - Life Cycles
 
@@ -30,6 +40,17 @@
     }
     
     self.navigationItem.title = @"Goal 1";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGHomeTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
+    
+    WEAK_SELF
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf queryInfo];
+    }];
+    
+    self.tableView.tableFooterView = [UIView new];
+    
+    self.viewModel.goalArr = [NSMutableArray new];
     
     [self createUI];
     [self queryInfo];
@@ -70,10 +91,26 @@
     NSArray *result = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
     NSLog(@"%@", result);
     
-    for (NSManagedObject *obj in result) {
-        NSLog(@"%@", [obj valueForKey:@"name"]);
-        NSLog(@"%@", [obj valueForKey:@"createTime"]);
+    for (Goal *obj in result) {
+        [self.viewModel.goalArr addObject:obj];
     }
+//    [self.tableView setStatusSuccess];
+    [self.tableView reloadData];
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.viewModel.goalArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OGHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
+    Goal *goal = self.viewModel.goalArr[indexPath.row];
+    cell.textLabel.text = goal.name;
+    cell.detailTextLabel.text = goal.createTime.dateString;
+    return cell;
 }
 
 @end

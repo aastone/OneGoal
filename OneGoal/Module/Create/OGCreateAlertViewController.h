@@ -8,8 +8,12 @@
 
 #import "BSBaseViewController.h"
 
+@class OGCreateGoalViewModel;
+
 @interface OGCreateAlertViewController : BSBaseViewController
 
 @property (nonatomic, copy) dispatch_block_t setUpCompleteBlock;
+
+DECLARE_VIEWMODEL(OGCreateGoalViewModel)
 
 @end

@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "OGCreateAlertViewController.h"
 #import "UIViewController+Helper.h"
+#import "OGCreateGoalViewModel.h"
 
 @interface OGCreateGoalViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -19,9 +20,13 @@
 
 @property (strong, nonatomic) AppDelegate *myAppDelegate;
 
+DECLARE_VIEWMODEL(OGCreateGoalViewModel)
+
 @end
 
 @implementation OGCreateGoalViewController
+
+DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,7 +62,7 @@
     
     Goal *goal = (Goal *)[NSEntityDescription insertNewObjectForEntityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
     
-    
+    self.viewModel.goalName = self.textField.text;
     
     [goal setValue:self.textField.text forKey:@"name"];
     [goal setValue:[NSDate date] forKey:@"createTime"];
@@ -88,6 +93,7 @@
 {
     __weak typeof(self) weakSelf = self;
     OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
+    alertVC.viewModel.goalName = self.viewModel.goalName;
     alertVC.setUpCompleteBlock = ^{
         [weakSelf dismissViewControllerAnimated:NO completion:nil];
     };

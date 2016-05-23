@@ -46,6 +46,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     WEAK_SELF
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf queryInfo];
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
     }];
     
     self.tableView.tableFooterView = [UIView new];
@@ -71,6 +72,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 - (void)createUI
 {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 }
 
 - (void)addButtonPressed:(UIBarButtonItem *)sender
@@ -89,13 +91,13 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     NSEntityDescription *user = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
     [request setEntity:user];
     NSArray *result = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"%@", result);
-    
-    for (Goal *obj in result) {
-        [self.viewModel.goalArr addObject:obj];
+    if (!error) {
+        [self.viewModel.goalArr removeAllObjects];
+        for (Goal *obj in result) {
+            [self.viewModel.goalArr addObject:obj];
+        }
+        [self.tableView reloadData];
     }
-//    [self.tableView setStatusSuccess];
-    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource

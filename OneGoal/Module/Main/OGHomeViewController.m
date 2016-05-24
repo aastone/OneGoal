@@ -45,7 +45,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     
     WEAK_SELF
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf queryInfo];
+        [weakSelf refreshTableView];
         [weakSelf.tableView.pullToRefreshView stopAnimating];
     }];
     
@@ -54,25 +54,22 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     self.viewModel.goalArr = [NSMutableArray new];
     
     [self createUI];
-    [self queryInfo];
+    [self refreshTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    NSArray *arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    if (arr.count) {
-        NSLog(@"%@", arr);
-        UILocalNotification *noti = arr[0];
-        NSLog(@"%@", noti.fireDate);
-    }
+    [self refreshTableView];
 }
 
 - (void)createUI
 {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Remove" style:UIBarButtonItemStylePlain target:self action:@selector(removeAllData)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 }
 
 - (void)addButtonPressed:(UIBarButtonItem *)sender
@@ -84,7 +81,9 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [self presentViewController:createGoalVC animated:YES completion:nil];
 }
 
-- (void)queryInfo
+#pragma mark - Core Data
+
+- (void)refreshTableView
 {
     NSError *error = nil;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -99,6 +98,22 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
         [self.tableView reloadData];
     }
 }
+
+- (void)removeAllData
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *goal = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:_myAppDelegate.managedObjectContext];
+    [request setEntity:goal];
+    
+    NSError *error = nil;
+    NSArray *result = [_myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
+    if (!error) {
+        for (Goal *tmp in result) {
+            [_myAppDelegate.managedObjectContext deleteObject:tmp];
+        }
+    }
+}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

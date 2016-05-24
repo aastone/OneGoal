@@ -13,6 +13,7 @@
 #import "OGCreateAlertViewController.h"
 #import "UIViewController+Helper.h"
 #import "OGCreateGoalViewModel.h"
+#import "SVProgressHUD.h"
 
 @interface OGCreateGoalViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -52,6 +53,11 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
+    if (self.textField.text.length == 0) {
+        //TODO 提示
+        [SVProgressHUD showErrorWithStatus:@"Please input your Goal !"];
+        return;
+    }
     [self saveData];
 }
     
@@ -75,18 +81,6 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
         NSLog(@"SUCCESS!");
         [self gotoCreateAlertVC];
     }
-
-    // 查询
-//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *user = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
-//    [request setEntity:user];
-//    NSArray *result = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
-//    NSLog(@"%@", result);
-//    
-//    for (NSManagedObject *obj in result) {
-//        NSLog(@"%@", [obj valueForKey:@"name"]);
-//        NSLog(@"%@", [obj valueForKey:@"createTime"]);
-//    }
 }
 
 - (void)gotoCreateAlertVC

@@ -13,6 +13,7 @@
 		8E0761901CEC575E00CE63DE /* OGHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E07618E1CEC575E00CE63DE /* OGHomeTableViewCell.m */; };
 		8E0761911CEC575E00CE63DE /* OGHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */; };
 		8E0761941CEC593200CE63DE /* OGHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761931CEC593200CE63DE /* OGHomeViewModel.m */; };
+		8E0761A81CF4294A00CE63DE /* OGGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */; };
 		8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */; };
 		8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */; };
 		8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */; };
@@ -85,6 +86,8 @@
 		8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OGHomeTableViewCell.xib; path = Main/OGHomeTableViewCell.xib; sourceTree = "<group>"; };
 		8E0761921CEC593200CE63DE /* OGHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGHomeViewModel.h; path = Main/OGHomeViewModel.h; sourceTree = "<group>"; };
 		8E0761931CEC593200CE63DE /* OGHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGHomeViewModel.m; path = Main/OGHomeViewModel.m; sourceTree = "<group>"; };
+		8E0761A61CF4294A00CE63DE /* OGGoalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGGoalDetailViewController.h; path = Main/OGGoalDetailViewController.h; sourceTree = "<group>"; };
+		8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGGoalDetailViewController.m; path = Main/OGGoalDetailViewController.m; sourceTree = "<group>"; };
 		8E2417F21CE57F92005E04F7 /* OneGoalPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneGoalPalette.h; sourceTree = "<group>"; };
 		8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneGoalPalette.m; sourceTree = "<group>"; };
 		8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateAlertViewController.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 			children = (
 				8E2A6D1E1CE6FBFB002FEF26 /* OGHomeViewController.h */,
 				8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */,
+				8E0761A61CF4294A00CE63DE /* OGGoalDetailViewController.h */,
+				8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */,
 				8E0761921CEC593200CE63DE /* OGHomeViewModel.h */,
 				8E0761931CEC593200CE63DE /* OGHomeViewModel.m */,
 				8E07618D1CEC575E00CE63DE /* OGHomeTableViewCell.h */,
@@ -652,6 +657,7 @@
 				8E81E5C21CE4636100280B25 /* LogUtils.m in Sources */,
 				8E81E5BA1CE4636100280B25 /* BSViewModel.m in Sources */,
 				8E81E5BF1CE4636100280B25 /* RKObjectUtilities.m in Sources */,
+				8E0761A81CF4294A00CE63DE /* OGGoalDetailViewController.m in Sources */,
 				8E81E5CF1CE4636100280B25 /* UITableView+Reorder.m in Sources */,
 				8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */,
 				8E81E5D31CE4636100280B25 /* BSLoadStatusView.m in Sources */,

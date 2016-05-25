@@ -108,10 +108,6 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 
 
 - (IBAction)doneButtonPressed:(id)sender {
-    //REMOVE
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    
-    
     //另外要设置多个星期，根据上个页面选择的提醒日
     
     if (self.selectedDays.count) {

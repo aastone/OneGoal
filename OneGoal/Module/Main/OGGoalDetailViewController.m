@@ -7,6 +7,10 @@
 //
 
 #import "OGGoalDetailViewController.h"
+#import "OGHomeViewModel.h"
+#import "OGConfig.h"
+#import "Goal.h"
+#import "NSDate+TimeUtil.h"
 
 @interface OGGoalDetailViewController ()
 
@@ -14,14 +18,30 @@
 
 @implementation OGGoalDetailViewController
 
+DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self showAllNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showAllNotifications
+{
+    NSArray *arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *local in arr) {
+        NSDate *info = local.userInfo[kOGGoalNotificationInfo];
+        NSString *hour = [local.fireDate stringWithDateFormat:@"HH:mm"];
+        if ([info isEqualToDate:self.viewModel.goal.createTime]) {
+            NSLog(@"%@--%@", local.userInfo[kOGGoalNotificationDetailInfo], hour);
+        }
+    }
 }
 
 /*

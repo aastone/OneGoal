@@ -8,6 +8,10 @@
 
 #import "BSBaseViewController.h"
 
+@class OGHomeViewModel;
+
 @interface OGGoalDetailViewController : BSBaseViewController
+
+DECLARE_VIEWMODEL(OGHomeViewModel)
 
 @end

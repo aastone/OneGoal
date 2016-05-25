@@ -10,6 +10,7 @@
 #import "NSDate+TimeUtil.h"
 #import "UIButton+Extension.h"
 #import "OGCreateGoalViewModel.h"
+#import "OGConfig.h"
 
 @interface OGCreateAlertViewController ()
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -134,11 +135,11 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     localAlert.hasAction = NO;
     if (weekday) {
         localAlert.fireDate = [self dateBySelectDayInWeek:weekday withDate:self.datePicker.date];
-        localAlert.userInfo = [NSDictionary dictionaryWithObject:weekday forKey:@"alertTime1"];
+        localAlert.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.viewModel.goalCreateDate,kOGGoalNotificationInfo, weekday, kOGGoalNotificationDetailInfo, nil];
         localAlert.repeatInterval = NSCalendarUnitWeekOfYear; //每周同一时间提醒
     }else {
         localAlert.fireDate = self.datePicker.date;
-        localAlert.userInfo = [NSDictionary dictionaryWithObject:@"a" forKey:@"alertTime1"];
+        localAlert.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.viewModel.goalCreateDate,kOGGoalNotificationInfo, @0, kOGGoalNotificationDetailInfo, nil];
     }
     [[UIApplication sharedApplication] scheduleLocalNotification:localAlert];
 }

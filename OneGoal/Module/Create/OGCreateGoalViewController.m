@@ -69,9 +69,10 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     Goal *goal = (Goal *)[NSEntityDescription insertNewObjectForEntityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
     
     self.viewModel.goalName = self.textField.text;
+    self.viewModel.goalCreateDate = [NSDate date];
     
     [goal setValue:self.textField.text forKey:@"name"];
-    [goal setValue:[NSDate date] forKey:@"createTime"];
+    [goal setValue:self.viewModel.goalCreateDate forKey:@"createTime"];
     
     NSError *error = nil;
     BOOL success = [self.myAppDelegate.managedObjectContext save:&error];
@@ -88,6 +89,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     __weak typeof(self) weakSelf = self;
     OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
     alertVC.viewModel.goalName = self.viewModel.goalName;
+    alertVC.viewModel.goalCreateDate = self.viewModel.goalCreateDate;
     alertVC.setUpCompleteBlock = ^{
         [weakSelf dismissViewControllerAnimated:NO completion:nil];
     };

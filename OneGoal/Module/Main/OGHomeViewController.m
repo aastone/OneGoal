@@ -16,6 +16,7 @@
 #import "Goal.h"
 #import "NSDate+TimeUtil.h"
 #import "SVPullToRefresh.h"
+#import "OGGoalDetailViewController.h"
 
 @interface OGHomeViewController()<UITableViewDelegate, UITableViewDataSource>
 
@@ -128,6 +129,14 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     cell.textLabel.text = goal.name;
     cell.detailTextLabel.text = goal.createTime.dateString;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Goal *goal = self.viewModel.goalArr[indexPath.row];
+    OGGoalDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGGoalDetailViewController class])];
+    vc.viewModel.goal = goal;
+    [self pushViewControllerHidesBottomBar:vc];
 }
 
 @end

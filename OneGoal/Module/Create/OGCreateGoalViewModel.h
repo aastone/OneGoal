@@ -11,5 +11,6 @@
 @interface OGCreateGoalViewModel : BSViewModel
 
 @property (nonatomic, strong) NSString *goalName;
+@property (nonatomic, strong) NSDate *goalCreateDate;
 
 @end

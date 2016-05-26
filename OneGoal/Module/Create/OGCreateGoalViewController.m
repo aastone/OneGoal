@@ -14,6 +14,7 @@
 #import "UIViewController+Helper.h"
 #import "OGCreateGoalViewModel.h"
 #import "SVProgressHUD.h"
+#import "OGInputGoalPlanViewController.h"
 
 @interface OGCreateGoalViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -64,7 +65,6 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 - (void)saveData
 {
     self.myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSLog(@"%@", self.myAppDelegate.managedObjectContext);
     
     Goal *goal = (Goal *)[NSEntityDescription insertNewObjectForEntityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
     
@@ -87,7 +87,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 - (void)gotoCreateAlertVC
 {
     __weak typeof(self) weakSelf = self;
-    OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
+    OGInputGoalPlanViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGInputGoalPlanViewController class])];
     alertVC.viewModel.goalName = self.viewModel.goalName;
     alertVC.viewModel.goalCreateDate = self.viewModel.goalCreateDate;
     alertVC.setUpCompleteBlock = ^{

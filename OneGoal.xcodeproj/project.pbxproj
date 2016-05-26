@@ -14,6 +14,7 @@
 		8E0761911CEC575E00CE63DE /* OGHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */; };
 		8E0761941CEC593200CE63DE /* OGHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761931CEC593200CE63DE /* OGHomeViewModel.m */; };
 		8E0761A81CF4294A00CE63DE /* OGGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */; };
+		8E0761AC1CF6D27700CE63DE /* OGInputGoalPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761AB1CF6D27700CE63DE /* OGInputGoalPlanViewController.m */; };
 		8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */; };
 		8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */; };
 		8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */; };
@@ -89,6 +90,10 @@
 		8E0761A61CF4294A00CE63DE /* OGGoalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGGoalDetailViewController.h; path = Main/OGGoalDetailViewController.h; sourceTree = "<group>"; };
 		8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGGoalDetailViewController.m; path = Main/OGGoalDetailViewController.m; sourceTree = "<group>"; };
 		8E0761A91CF434BD00CE63DE /* OGConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGConfig.h; sourceTree = "<group>"; };
+		8E0761AA1CF6D27700CE63DE /* OGInputGoalPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGInputGoalPlanViewController.h; sourceTree = "<group>"; };
+		8E0761AB1CF6D27700CE63DE /* OGInputGoalPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGInputGoalPlanViewController.m; sourceTree = "<group>"; };
+		8E0761AD1CF6EC5700CE63DE /* OneGoal 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OneGoal 3.xcdatamodel"; sourceTree = "<group>"; };
+		8E0761AE1CF6ECEC00CE63DE /* OneGoal 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OneGoal 4.xcdatamodel"; sourceTree = "<group>"; };
 		8E2417F21CE57F92005E04F7 /* OneGoalPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneGoalPalette.h; sourceTree = "<group>"; };
 		8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneGoalPalette.m; sourceTree = "<group>"; };
 		8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateAlertViewController.h; sourceTree = "<group>"; };
@@ -429,6 +434,8 @@
 			children = (
 				8E81E7C61CE46AC900280B25 /* OGCreateGoalViewController.h */,
 				8E81E7C71CE46AC900280B25 /* OGCreateGoalViewController.m */,
+				8E0761AA1CF6D27700CE63DE /* OGInputGoalPlanViewController.h */,
+				8E0761AB1CF6D27700CE63DE /* OGInputGoalPlanViewController.m */,
 				8E07618A1CEC0F3000CE63DE /* OGCreateGoalViewModel.h */,
 				8E07618B1CEC0F3000CE63DE /* OGCreateGoalViewModel.m */,
 				8E0761871CE9ABE200CE63DE /* OGChooseDaysViewController.h */,
@@ -682,6 +689,7 @@
 				8E81E5CE1CE4636100280B25 /* UITableView+Helper.m in Sources */,
 				8E81E5461CE4634300280B25 /* main.m in Sources */,
 				8E81E5C51CE4636100280B25 /* NSNull+Util.m in Sources */,
+				8E0761AC1CF6D27700CE63DE /* OGInputGoalPlanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,10 +952,12 @@
 		8E81E5501CE4634300280B25 /* OneGoal.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8E0761AE1CF6ECEC00CE63DE /* OneGoal 4.xcdatamodel */,
+				8E0761AD1CF6EC5700CE63DE /* OneGoal 3.xcdatamodel */,
 				8E81E7D01CE490E700280B25 /* OneGoal 2.xcdatamodel */,
 				8E81E5511CE4634300280B25 /* OneGoal.xcdatamodel */,
 			);
-			currentVersion = 8E81E7D01CE490E700280B25 /* OneGoal 2.xcdatamodel */;
+			currentVersion = 8E0761AE1CF6ECEC00CE63DE /* OneGoal 4.xcdatamodel */;
 			path = OneGoal.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

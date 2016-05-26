@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="527"/>
+            <point key="canvasLocation" x="-97" y="527"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E54-Oz-dJS">
@@ -317,6 +317,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJk-e9-8AJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="665" y="527"/>
+        </scene>
+        <!--Input Goal Plan View Controller-->
+        <scene sceneID="tJG-bP-K1c">
+            <objects>
+                <viewController storyboardIdentifier="OGInputGoalPlanViewController" id="HMZ-GR-kQn" customClass="OGInputGoalPlanViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8gH-Wk-zcW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rgt-jY-Afi">
+                                <rect key="frame" x="133" y="491" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.27450980390000002" green="0.23529411759999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="HMZ-GR-kQn" eventType="touchUpInside" id="2ao-OM-Orp"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="12g-J9-tcg">
+                                <rect key="frame" x="33" y="128" width="254" height="312"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.58431372550000005" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="textView" destination="12g-J9-tcg" id="Mca-NU-6PO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADq-gA-Rd4" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="527"/>
         </scene>
     </scenes>
 </document>

@@ -7,19 +7,18 @@
 //
 
 #import "OGCoreDataOperation.h"
-#import <CoreData/CoreData.h>
 
 @implementation OGCoreDataOperation
 
-+ (void)entityUpdateWithName:(Class)entityClassName predicate:(NSPredicate *)predicate delegate:(AppDelegate *)delegate completion:(void (^)(NSError *error, id entity))completion
++ (void)entityUpdateWithName:(Class)entityClassName predicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context completion:(void (^)(NSError *error, id entity))completion
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:NSStringFromClass([entityClassName class]) inManagedObjectContext:delegate.managedObjectContext]];
+    [request setEntity:[NSEntityDescription entityForName:NSStringFromClass([entityClassName class]) inManagedObjectContext:context]];
     
     [request setPredicate:predicate];
     
     NSError *error = nil;
-    NSArray *results = [delegate.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *results = [context executeFetchRequest:request error:&error];
     
     if (error) {
         completion(error, nil);

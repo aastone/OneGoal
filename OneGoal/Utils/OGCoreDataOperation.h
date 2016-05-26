@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
 
 @interface OGCoreDataOperation : NSObject
 
-+ (void)entityUpdateWithName:(id)entityClassName predicate:(NSPredicate *)predicate delegate:(AppDelegate *)delegate completion:(void (^)(NSError *error, id entity))completion;
++ (void)entityUpdateWithName:(id)entityClassName predicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context completion:(void (^)(NSError *error, id entity))completion;
 
 @end

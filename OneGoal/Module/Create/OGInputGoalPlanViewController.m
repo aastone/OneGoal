@@ -42,7 +42,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"createTime == %@", self.viewModel.goalCreateDate];
     
-    [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate delegate:self.myAppDelegate completion:^(NSError *error, id entity) {
+    [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate context:self.myAppDelegate.managedObjectContext completion:^(NSError *error, id entity) {
         if (!error) {
             Goal *goal = entity;
             goal.plan = self.textView.text;

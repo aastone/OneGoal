@@ -11,6 +11,7 @@
 #import "OGCreateGoalViewModel.h"
 #import "Goal.h"
 #import "AppDelegate.h"
+#import "OGCoreDataOperation.h"
 
 @interface OGInputGoalPlanViewController()
 
@@ -39,19 +40,15 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 
 - (void)addPlan
 {
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.myAppDelegate.managedObjectContext]];
-    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"createTime == %@", self.viewModel.goalCreateDate];
-    [request setPredicate:predicate];
     
-    NSError *error = nil;
-    NSArray *results = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
-    
-    Goal *goal = [results objectAtIndex:0];
-    goal.plan = self.textView.text;
-    
-    [self.myAppDelegate saveContext];
+    [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate delegate:self.myAppDelegate completion:^(NSError *error, id entity) {
+        if (!error) {
+            Goal *goal = entity;
+            goal.plan = self.textView.text;
+            [self.myAppDelegate saveContext];
+        }
+    }];
 }
 
 - (IBAction)nextButtonPressed:(id)sender {

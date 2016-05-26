@@ -87,13 +87,13 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 - (void)gotoCreateAlertVC
 {
     __weak typeof(self) weakSelf = self;
-    OGInputGoalPlanViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGInputGoalPlanViewController class])];
-    alertVC.viewModel.goalName = self.viewModel.goalName;
-    alertVC.viewModel.goalCreateDate = self.viewModel.goalCreateDate;
-    alertVC.setUpCompleteBlock = ^{
+    OGInputGoalPlanViewController *inputPlanVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGInputGoalPlanViewController class])];
+    inputPlanVC.viewModel.goalName = self.viewModel.goalName;
+    inputPlanVC.viewModel.goalCreateDate = self.viewModel.goalCreateDate;
+    inputPlanVC.setUpCompleteBlock = ^{
         [weakSelf dismissViewControllerAnimated:NO completion:nil];
     };
-    [self showViewController:alertVC sender:nil];
+    [self showViewController:inputPlanVC sender:nil];
 }
 
 @end

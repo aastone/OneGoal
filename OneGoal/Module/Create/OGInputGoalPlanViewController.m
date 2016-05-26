@@ -54,6 +54,15 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 - (IBAction)nextButtonPressed:(id)sender {
     NSLog(@"%@", self.textView.text);
     [self addPlan];
+    
+    __weak typeof(self) weakSelf = self;
+    OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
+    alertVC.viewModel.goalName = self.viewModel.goalName;
+    alertVC.viewModel.goalCreateDate = self.viewModel.goalCreateDate;
+    alertVC.setUpCompleteBlock = ^{
+        [weakSelf dismissViewControllerAnimated:NO completion:nil];
+    };
+    [self showViewController:alertVC sender:nil];
 }
 
 @end

@@ -219,6 +219,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8E0761B21CF8297E00CE63DE /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				8E0761A91CF434BD00CE63DE /* OGConfig.h */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
 		8E2417F11CE57F0B005E04F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +280,7 @@
 		8E81E5431CE4634300280B25 /* OneGoal */ = {
 			isa = PBXGroup;
 			children = (
+				8E0761B21CF8297E00CE63DE /* Public */,
 				8E2417F11CE57F0B005E04F7 /* Utils */,
 				8E81E7C91CE46E6F00280B25 /* Model */,
 				8E81E7C41CE46A5200280B25 /* Module */,
@@ -291,7 +300,6 @@
 				8E81E5581CE4634300280B25 /* Info.plist */,
 				8E81E5501CE4634300280B25 /* OneGoal.xcdatamodeld */,
 				8E81E5451CE4634300280B25 /* main.m */,
-				8E0761A91CF434BD00CE63DE /* OGConfig.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

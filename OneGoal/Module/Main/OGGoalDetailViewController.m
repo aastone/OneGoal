@@ -13,10 +13,15 @@
 #import "NSDate+TimeUtil.h"
 #import "OGCreateAlertViewController.h"
 #import "OGCreateGoalViewModel.h"
+#import "AppDelegate.h"
+#import "OGCoreDataOperation.h"
+#import "OGInputGoalPlanViewController.h"
 
 @interface OGGoalDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
 @property (weak, nonatomic) IBOutlet UIView *notificationBgView;
+@property (weak, nonatomic) IBOutlet UITextView *planTextView;
+@property (nonatomic, strong) AppDelegate *myAppDelegate;
 
 @end
 
@@ -28,13 +33,20 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if (!self.myAppDelegate) {
+        self.myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    }
+    
     [self showAllNotifications];
+    [self showPlanInfo];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Notifications
 
 - (void)showAllNotifications
 {
@@ -99,7 +111,6 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     }
 }
 
-
 - (IBAction)editNotificationButtonPressed:(id)sender {
     [self cancelNotifications];
     
@@ -108,5 +119,38 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
     [self presentViewController:vc animated:YES completion:nil];
 }
+
+#pragma mark - Plans
+
+- (void)showPlanInfo
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"createTime == %@", self.viewModel.goal.createTime];
+    [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate context:self.myAppDelegate.managedObjectContext completion:^(NSError *error, id entity) {
+        if (!error) {
+            Goal *goal = entity;
+            self.planTextView.text = goal.plan;
+        }
+    }];
+}
+
+- (IBAction)tapPlanTextView:(id)sender {
+    OGInputGoalPlanViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGInputGoalPlanViewController class])];
+    vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
+    vc.shouldShowCancelButton = YES;
+    vc.viewModel.goalPlan = self.planTextView.text;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

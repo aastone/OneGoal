@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *goalName;
 @property (nonatomic, strong) NSDate *goalCreateDate;
+@property (nonatomic, strong) NSString *goalPlan;
 
 @end

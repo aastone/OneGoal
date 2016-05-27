@@ -16,4 +16,6 @@ DECLARE_VIEWMODEL(OGCreateGoalViewModel)
 
 @property (nonatomic, copy) dispatch_block_t setUpCompleteBlock;
 
+@property (nonatomic, assign) BOOL shouldShowCancelButton;
+
 @end

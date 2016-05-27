@@ -16,6 +16,7 @@
 @interface OGInputGoalPlanViewController()
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, strong) AppDelegate *myAppDelegate;
 
@@ -33,8 +34,14 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
         self.myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     
-    if (self.setUpCompleteBlock) {
-        self.setUpCompleteBlock();
+    if (_shouldShowCancelButton) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
+        self.nextButton.hidden = YES;
+        self.textView.text = self.viewModel.goalPlan;
+    }else {
+        if (self.setUpCompleteBlock) {
+            self.setUpCompleteBlock();
+        }
     }
 }
 
@@ -51,8 +58,14 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     }];
 }
 
+- (void)saveButtonPressed
+{
+    [self addPlan];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (IBAction)nextButtonPressed:(id)sender {
-    NSLog(@"%@", self.textView.text);
     [self addPlan];
     
     __weak typeof(self) weakSelf = self;

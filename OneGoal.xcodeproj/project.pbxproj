@@ -227,6 +227,16 @@
 			name = Public;
 			sourceTree = "<group>";
 		};
+		8E0761B31CF9839F00CE63DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E07618D1CEC575E00CE63DE /* OGHomeTableViewCell.h */,
+				8E07618E1CEC575E00CE63DE /* OGHomeTableViewCell.m */,
+				8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		8E2417F11CE57F0B005E04F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,15 +251,13 @@
 		8E2A6D1D1CE6FBB4002FEF26 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				8E0761B31CF9839F00CE63DE /* View */,
 				8E2A6D1E1CE6FBFB002FEF26 /* OGHomeViewController.h */,
 				8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */,
 				8E0761A61CF4294A00CE63DE /* OGGoalDetailViewController.h */,
 				8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */,
 				8E0761921CEC593200CE63DE /* OGHomeViewModel.h */,
 				8E0761931CEC593200CE63DE /* OGHomeViewModel.m */,
-				8E07618D1CEC575E00CE63DE /* OGHomeTableViewCell.h */,
-				8E07618E1CEC575E00CE63DE /* OGHomeTableViewCell.m */,
-				8E07618F1CEC575E00CE63DE /* OGHomeTableViewCell.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";

@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) AppDelegate *myAppDelegate;
 
+@property (nonatomic, strong) OGHomeTableViewCell *tmpCell;
+
 DECLARE_VIEWMODEL(OGHomeViewModel)
 
 @end
@@ -51,6 +53,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     }];
     
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.viewModel.goalArr = [NSMutableArray new];
     
@@ -126,9 +129,24 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 {
     OGHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
     Goal *goal = self.viewModel.goalArr[indexPath.row];
-    cell.textLabel.text = goal.name;
-    cell.detailTextLabel.text = goal.createTime.dateString;
+    cell.singleGoal = goal;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!self.tmpCell) {
+        self.tmpCell = (OGHomeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
+    }
+    self.tmpCell.singleGoal = self.viewModel.goalArr[indexPath.row];
+    
+    CGFloat height = [self.tmpCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    return height+1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 106;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -7,6 +7,8 @@
 //
 
 #import "OGHomeTableViewCell.h"
+#import "Goal.h"
+#import "NSDate+TimeUtil.h"
 
 @implementation OGHomeTableViewCell
 
@@ -19,6 +21,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setSingleGoal:(Goal *)singleGoal
+{
+    self.name.text = singleGoal.name;
+    self.plan.text = singleGoal.plan;
+    self.createTime.text = singleGoal.createTime.dateString;
+    
+//    [self.statusImageView setImage:[[UIImage alloc] crea]]]
 }
 
 @end

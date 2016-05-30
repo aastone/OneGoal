@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ZMStoreRecipientQRCodeViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +19,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self registeNotificationSettings];
+//    [self gotoTestVC];
     return YES;
+}
+
+- (void)gotoTestVC
+{
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ZMStoreRecipientQRCodeViewController new]];
 }
 
 - (void)registeNotificationSettings

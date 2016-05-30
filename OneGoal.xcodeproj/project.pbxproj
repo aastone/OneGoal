@@ -16,6 +16,8 @@
 		8E0761A81CF4294A00CE63DE /* OGGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761A71CF4294A00CE63DE /* OGGoalDetailViewController.m */; };
 		8E0761AC1CF6D27700CE63DE /* OGInputGoalPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761AB1CF6D27700CE63DE /* OGInputGoalPlanViewController.m */; };
 		8E0761B11CF6FBC900CE63DE /* OGCoreDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761B01CF6FBC900CE63DE /* OGCoreDataOperation.m */; };
+		8E0761B81CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0761B61CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.m */; };
+		8E0761B91CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0761B71CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.xib */; };
 		8E2417F41CE57F92005E04F7 /* OneGoalPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */; };
 		8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2417F61CE5C09F005E04F7 /* OGCreateAlertViewController.m */; };
 		8E2A6D201CE6FBFB002FEF26 /* OGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A6D1F1CE6FBFB002FEF26 /* OGHomeViewController.m */; };
@@ -97,6 +99,9 @@
 		8E0761AE1CF6ECEC00CE63DE /* OneGoal 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OneGoal 4.xcdatamodel"; sourceTree = "<group>"; };
 		8E0761AF1CF6FBC900CE63DE /* OGCoreDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCoreDataOperation.h; sourceTree = "<group>"; };
 		8E0761B01CF6FBC900CE63DE /* OGCoreDataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGCoreDataOperation.m; sourceTree = "<group>"; };
+		8E0761B51CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZMStoreRecipientQRCodeViewController.h; path = Test/ZMStoreRecipientQRCodeViewController.h; sourceTree = "<group>"; };
+		8E0761B61CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZMStoreRecipientQRCodeViewController.m; path = Test/ZMStoreRecipientQRCodeViewController.m; sourceTree = "<group>"; };
+		8E0761B71CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZMStoreRecipientQRCodeViewController.xib; path = Test/ZMStoreRecipientQRCodeViewController.xib; sourceTree = "<group>"; };
 		8E2417F21CE57F92005E04F7 /* OneGoalPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneGoalPalette.h; sourceTree = "<group>"; };
 		8E2417F31CE57F92005E04F7 /* OneGoalPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneGoalPalette.m; sourceTree = "<group>"; };
 		8E2417F51CE5C09F005E04F7 /* OGCreateAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGCreateAlertViewController.h; sourceTree = "<group>"; };
@@ -237,6 +242,16 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		8E0761B41CF9EF7400CE63DE /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				8E0761B51CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.h */,
+				8E0761B61CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.m */,
+				8E0761B71CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.xib */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		8E2417F11CE57F0B005E04F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +315,7 @@
 		8E81E5441CE4634300280B25 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8E0761B41CF9EF7400CE63DE /* Test */,
 				8E81E5471CE4634300280B25 /* AppDelegate.h */,
 				8E81E5481CE4634300280B25 /* AppDelegate.m */,
 				8E81E54D1CE4634300280B25 /* Main.storyboard */,
@@ -596,6 +612,7 @@
 				8E81E5571CE4634300280B25 /* LaunchScreen.storyboard in Resources */,
 				8E81E5541CE4634300280B25 /* Assets.xcassets in Resources */,
 				8E0761911CEC575E00CE63DE /* OGHomeTableViewCell.xib in Resources */,
+				8E0761B91CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.xib in Resources */,
 				8E81E54F1CE4634300280B25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,6 +707,7 @@
 				8E0761A81CF4294A00CE63DE /* OGGoalDetailViewController.m in Sources */,
 				8E81E5CF1CE4636100280B25 /* UITableView+Reorder.m in Sources */,
 				8E2417F71CE5C09F005E04F7 /* OGCreateAlertViewController.m in Sources */,
+				8E0761B81CF9EF9600CE63DE /* ZMStoreRecipientQRCodeViewController.m in Sources */,
 				8E81E5D31CE4636100280B25 /* BSLoadStatusView.m in Sources */,
 				8E81E5BE1CE4636100280B25 /* BSHTTPAPIManager.m in Sources */,
 				8E0761891CE9ABE200CE63DE /* OGChooseDaysViewController.m in Sources */,

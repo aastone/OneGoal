@@ -9,12 +9,17 @@
 #import "OGHomeTableViewCell.h"
 #import "Goal.h"
 #import "NSDate+TimeUtil.h"
+#import "UIColor+Tools.h"
 
 @implementation OGHomeTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     // Initialization code
+    self.layer.cornerRadius = 8.0;
+    self.layer.borderWidth = 1.0;
+    self.layer.borderColor = [UIColor colorWithHexString:@"0x979797"].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

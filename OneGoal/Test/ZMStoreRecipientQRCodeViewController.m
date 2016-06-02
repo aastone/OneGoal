@@ -10,6 +10,7 @@
 #import "SVProgressHUD.h"
 #import "UIImage+Utils.h"
 #import "UIViewController+Helper.h"
+#import "UIView+Helper.h"
 
 @interface ZMStoreRecipientQRCodeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *QRCodeImageView;
@@ -59,9 +60,28 @@
 }
 
 #pragma mark - Actions
+- (void)getbuttonLayer
+{
+    for (id object in self.view.subviews) {
+        if ([object isKindOfClass:[UIButton class]]) {
+            return;
+        }
+    }
+}
+
 - (void)gotoHelp
 {
+    static dispatch_once_t predicate;
+    static ZMStoreRecipientQRCodeViewController *sharedInstance;
+    dispatch_once(&predicate, ^{
+        sharedInstance = [[ZMStoreRecipientQRCodeViewController alloc] init];
+    });
     
+    @synchronized (self) {
+        if (!sharedInstance) {
+            sharedInstance = [ZMStoreRecipientQRCodeViewController new];
+        }
+    }
 }
 
 - (IBAction)saveButtonPressed:(id)sender {

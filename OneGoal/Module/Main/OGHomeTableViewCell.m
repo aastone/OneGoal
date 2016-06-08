@@ -17,9 +17,10 @@
     [super awakeFromNib];
     
     // Initialization code
-    self.layer.cornerRadius = 8.0;
-    self.layer.borderWidth = 1.0;
-    self.layer.borderColor = [UIColor colorWithHexString:@"0x979797"].CGColor;
+    self.layer.cornerRadius = 16.0;
+    self.layer.borderWidth = 2.0;
+    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,10 +32,12 @@
 - (void)setSingleGoal:(Goal *)singleGoal
 {
     self.name.text = singleGoal.name;
-    self.plan.text = singleGoal.plan;
+    if (singleGoal.plan.length) {
+        self.plan.text = singleGoal.plan;
+    }else {
+        self.plan.text = @"#You can add your plan here.#";
+    }
     self.createTime.text = singleGoal.createTime.dateString;
-    
-//    [self.statusImageView setImage:[[UIImage alloc] crea]]]
 }
 
 @end

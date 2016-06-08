@@ -74,6 +74,8 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Remove" style:UIBarButtonItemStylePlain target:self action:@selector(removeAllData)];
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    
+    self.tableView.separatorInset = UIEdgeInsetsZero;
 }
 
 - (void)addButtonPressed:(UIBarButtonItem *)sender
@@ -141,7 +143,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     self.tmpCell.singleGoal = self.viewModel.goalArr[indexPath.row];
     
     CGFloat height = [self.tmpCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    return height+1;
+    return height+1+8;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath

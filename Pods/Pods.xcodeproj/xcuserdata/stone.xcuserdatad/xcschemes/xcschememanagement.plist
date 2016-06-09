@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JTCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NSDate-Escort.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0295F656C435C7920901DD8987D9276A</key>
+		<key>0980087055DDD47CB7EF8FD1432E9EAE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0D99D9CCA73F97ECA9DDD9DDCF737969</key>
+		<key>13C6FFC8B3174DAAE3C5F2B61EF3EA96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,17 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39C19F3EA35B3DAAF36D361FCC3E93DC</key>
+		<key>39B5CF86C5D5526023BFA614CD6D37DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ACEFAD795C0C08B0BE6121E473AB923F</key>
+		<key>46D6E941556B13B79E8AC52F77F6B093</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1ECC6263CC80D334F00EB33BCF7D8AA</key>
+		<key>4DB2848FC9F05BDAF962C654A79052ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6DF68C4B78046AAFECEA56CDF90CD1C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2CD3F7A2E9916E8BB707E953BCA377D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -98,11 +113,6 @@
 			<true/>
 		</dict>
 		<key>E2E5E2F392237EA85202BF0F717C92B4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FD31766C14A01E9507F276C4920ED562</key>
 		<dict>
 			<key>primary</key>
 			<true/>

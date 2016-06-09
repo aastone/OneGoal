@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Aspects (1.4.1)
   - HandyAutoLayout (1.0.0)
+  - JTCalendar (2.1.7)
   - NSDate-Escort (1.7.0)
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Aspects
   - HandyAutoLayout
+  - JTCalendar (~> 2.0)
   - NSDate-Escort
   - ReactiveCocoa
   - SVProgressHUD
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   HandyAutoLayout: f6ef3ab011318f8493fa868d93d9b03ceef4ef90
+  JTCalendar: bc7f3086a4df02aa2e02ac4d505ef888cc2283a0
   NSDate-Escort: 3469fefab423c094108c2e864416b61b6ac0edbc
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DF4DA869BC6C35ECE18EAD3E'
+               BlueprintIdentifier = '8D54EE13DF65BE3EECB0481B'
                BlueprintName = 'HandyAutoLayout'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'HandyAutoLayout.framework'>

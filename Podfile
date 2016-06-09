@@ -12,6 +12,7 @@ target 'OneGoal' do
     pod 'Aspects'
     pod 'SVProgressHUD'
     pod 'SVPullToRefresh'
+    pod 'JTCalendar', '~> 2.0'
 end
 
 target 'OneGoalTests' do

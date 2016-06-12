@@ -16,12 +16,14 @@
 #import "AppDelegate.h"
 #import "OGCoreDataOperation.h"
 #import "OGInputGoalPlanViewController.h"
+#import "OGHomeTableViewCell.h"
 
-@interface OGGoalDetailViewController ()
+@interface OGGoalDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
 @property (weak, nonatomic) IBOutlet UIView *notificationBgView;
 @property (weak, nonatomic) IBOutlet UITextView *planTextView;
 @property (nonatomic, strong) AppDelegate *myAppDelegate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 
 @end
 
@@ -39,11 +41,22 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     
     [self showAllNotifications];
     [self showPlanInfo];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGHomeTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.tableViewHeight.constant = 500;
+    
+    [self.view layoutSubviews];
 }
 
 #pragma mark - Notifications
@@ -63,8 +76,11 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
             alertTime = [local.fireDate stringWithDateFormat:@"HH:mm"];
         }
     }
-    
-    self.notificationInfoLabel.text = [NSString stringWithFormat:@"提醒时间：\n每%@\n%@", alertWeekday, alertTime];
+    if (alertTime) {
+        self.notificationInfoLabel.text = [NSString stringWithFormat:@"提醒时间：每%@%@", alertWeekday, alertTime];
+    }else {
+        self.notificationInfoLabel.text = @"点击设置提醒时间";
+    }
     [self.notificationInfoLabel setFont:[UIFont systemFontOfSize:14.0]];
     [self.notificationInfoLabel sizeToFit];
 }
@@ -128,7 +144,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate context:self.myAppDelegate.managedObjectContext completion:^(NSError *error, id entity) {
         if (!error) {
             Goal *goal = entity;
-            self.planTextView.text = goal.plan;
+            self.planTextView.text = goal.plan.length?goal.plan:@"#You can write your plan here.";
         }
     }];
 }
@@ -143,7 +159,18 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 
 
 
+#pragma mark - UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 8;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OGHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
+    cell.name.text = @"name";
+    return cell;
+}
 
 
 

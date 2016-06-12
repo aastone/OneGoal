@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "OGCoreDataOperation.h"
 #import "OGInputGoalPlanViewController.h"
-#import "OGHomeTableViewCell.h"
+#import "OGDetailDailyRemarkTableViewCell.h"
 
 @interface OGGoalDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
@@ -42,7 +42,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [self showAllNotifications];
     [self showPlanInfo];
     
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGHomeTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGDetailDailyRemarkTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +54,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 {
     [super viewDidLayoutSubviews];
     
-    self.tableViewHeight.constant = 500;
+    self.tableViewHeight.constant = 8*60;
     
     [self.view layoutSubviews];
 }
@@ -167,9 +167,14 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OGHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
-    cell.name.text = @"name";
+    OGDetailDailyRemarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
+    cell.contentLabel.text = @"jnjnjnjnj";
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 

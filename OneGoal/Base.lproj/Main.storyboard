@@ -175,7 +175,7 @@
                                             <outletCollection property="gestureRecognizers" destination="TyS-3C-SBQ" appends="YES" id="foA-3a-FWm"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb1-b8-eCN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb1-b8-eCN">
                                         <rect key="frame" x="8" y="23" width="304" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="304" id="pr1-5r-edN"/>
@@ -239,11 +239,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="wN7-Pl-09w" id="itc-RU-5Io"/>
                         <outlet property="notificationBgView" destination="Bdj-Uo-tWM" id="3n2-7D-CAR"/>
                         <outlet property="notificationInfoLabel" destination="CvT-V1-Yyy" id="hNB-Kt-UXM"/>
                         <outlet property="planTextView" destination="AQp-aJ-MRV" id="vo0-nf-zda"/>
                         <outlet property="tableView" destination="uB6-1m-eRx" id="JuG-lt-SMW"/>
                         <outlet property="tableViewHeight" destination="ccH-c6-09W" id="DfO-UB-YFt"/>
+                        <outlet property="titleLabel" destination="Vb1-b8-eCN" id="VBo-Qv-sqi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAi-ho-U2U" userLabel="First Responder" sceneMemberID="firstResponder"/>

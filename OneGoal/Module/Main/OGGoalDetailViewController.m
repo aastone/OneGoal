@@ -17,6 +17,7 @@
 #import "OGCoreDataOperation.h"
 #import "OGInputGoalPlanViewController.h"
 #import "OGDetailDailyRemarkTableViewCell.h"
+#import "NSNumber+Util.h"
 
 @interface OGGoalDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
@@ -24,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *planTextView;
 @property (nonatomic, strong) AppDelegate *myAppDelegate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -39,8 +42,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
         self.myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     
-    [self showAllNotifications];
-    [self showPlanInfo];
+    [self showViewContent];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGDetailDailyRemarkTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
 }
@@ -59,7 +61,17 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [self.view layoutSubviews];
 }
 
-#pragma mark - Notifications
+#pragma mark - View Content
+- (void)showViewContent
+{
+    self.titleLabel.text = self.viewModel.goal.name;
+    self.dateLabel.text = self.viewModel.goal.createTime.dateString;
+    
+    [self showAllNotifications];
+    [self showPlanInfo];
+}
+
+#pragma mark  Notifications
 
 - (void)showAllNotifications
 {
@@ -136,7 +148,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-#pragma mark - Plans
+#pragma mark  Plans
 
 - (void)showPlanInfo
 {

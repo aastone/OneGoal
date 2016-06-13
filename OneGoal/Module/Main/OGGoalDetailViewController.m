@@ -18,6 +18,7 @@
 #import "OGInputGoalPlanViewController.h"
 #import "OGDetailDailyRemarkTableViewCell.h"
 #import "NSNumber+Util.h"
+#import "OGDetailHeaderView.h"
 
 @interface OGGoalDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
@@ -27,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@property (nonatomic, strong) UIView *detailHeaderView;
 
 @end
 
@@ -42,6 +45,10 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
         self.myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([OGDetailHeaderView class]) owner:self options:nil];
+    
+    self.detailHeaderView = [nib objectAtIndex:0];
+    
     [self showViewContent];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGDetailDailyRemarkTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
@@ -56,7 +63,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 {
     [super viewDidLayoutSubviews];
     
-    self.tableViewHeight.constant = [self tableView:self.tableView numberOfRowsInSection:0]*60;
+    self.tableViewHeight.constant = [self tableView:self.tableView heightForHeaderInSection:0] + [self tableView:self.tableView numberOfRowsInSection:0]*60;
     
     [self.view layoutSubviews];
 }
@@ -174,7 +181,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -193,6 +200,16 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.detailHeaderView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 100;
 }
 
 

@@ -61,6 +61,8 @@
 		8E81E7CF1CE46ECE00280B25 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81E7CD1CE46ECE00280B25 /* Goal.m */; };
 		8E9D473B1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D47391D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.m */; };
 		8E9D473C1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E9D473A1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.xib */; };
+		8E9D47401D0EB93200710FAD /* OGDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D473E1D0EB93200710FAD /* OGDetailHeaderView.m */; };
+		8E9D47411D0EB93200710FAD /* OGDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E9D473F1D0EB93200710FAD /* OGDetailHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +193,9 @@
 		8E9D47381D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGDetailDailyRemarkTableViewCell.h; path = Main/OGDetailDailyRemarkTableViewCell.h; sourceTree = "<group>"; };
 		8E9D47391D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGDetailDailyRemarkTableViewCell.m; path = Main/OGDetailDailyRemarkTableViewCell.m; sourceTree = "<group>"; };
 		8E9D473A1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OGDetailDailyRemarkTableViewCell.xib; path = Main/OGDetailDailyRemarkTableViewCell.xib; sourceTree = "<group>"; };
+		8E9D473D1D0EB93200710FAD /* OGDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OGDetailHeaderView.h; path = Main/OGDetailHeaderView.h; sourceTree = "<group>"; };
+		8E9D473E1D0EB93200710FAD /* OGDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OGDetailHeaderView.m; path = Main/OGDetailHeaderView.m; sourceTree = "<group>"; };
+		8E9D473F1D0EB93200710FAD /* OGDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OGDetailHeaderView.xib; path = Main/OGDetailHeaderView.xib; sourceTree = "<group>"; };
 		BDFC5912B7B1F015249D8C9A /* Pods_OneGoal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneGoal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -246,6 +251,9 @@
 				8E9D47381D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.h */,
 				8E9D47391D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.m */,
 				8E9D473A1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.xib */,
+				8E9D473D1D0EB93200710FAD /* OGDetailHeaderView.h */,
+				8E9D473E1D0EB93200710FAD /* OGDetailHeaderView.m */,
+				8E9D473F1D0EB93200710FAD /* OGDetailHeaderView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E9D473C1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.xib in Resources */,
+				8E9D47411D0EB93200710FAD /* OGDetailHeaderView.xib in Resources */,
 				8E81E5571CE4634300280B25 /* LaunchScreen.storyboard in Resources */,
 				8E81E5541CE4634300280B25 /* Assets.xcassets in Resources */,
 				8E0761911CEC575E00CE63DE /* OGHomeTableViewCell.xib in Resources */,
@@ -711,6 +720,7 @@
 				8E81E5B91CE4636100280B25 /* BSBaseViewController.m in Sources */,
 				8E81E7C81CE46AC900280B25 /* OGCreateGoalViewController.m in Sources */,
 				8E81E5C21CE4636100280B25 /* LogUtils.m in Sources */,
+				8E9D47401D0EB93200710FAD /* OGDetailHeaderView.m in Sources */,
 				8E81E5BA1CE4636100280B25 /* BSViewModel.m in Sources */,
 				8E81E5BF1CE4636100280B25 /* RKObjectUtilities.m in Sources */,
 				8E9D473B1D0D66D200710FAD /* OGDetailDailyRemarkTableViewCell.m in Sources */,

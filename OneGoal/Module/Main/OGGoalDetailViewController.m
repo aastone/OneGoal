@@ -54,7 +54,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 {
     [super viewDidLayoutSubviews];
     
-    self.tableViewHeight.constant = 8*60;
+    self.tableViewHeight.constant = [self tableView:self.tableView numberOfRowsInSection:0]*60;
     
     [self.view layoutSubviews];
 }
@@ -162,7 +162,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

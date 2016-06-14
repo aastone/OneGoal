@@ -146,15 +146,6 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     }
 }
 
-- (IBAction)editNotificationButtonPressed:(id)sender {
-    [self cancelNotifications];
-    
-    OGCreateAlertViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
-    vc.viewModel.goalName = self.viewModel.goal.name;
-    vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
-    [self presentViewController:vc animated:YES completion:nil];
-}
-
 #pragma mark  Plans
 
 - (void)showPlanInfo
@@ -168,14 +159,24 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     }];
 }
 
+#pragma mark - Actions
+
 - (IBAction)tapPlanTextView:(id)sender {
     OGInputGoalPlanViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGInputGoalPlanViewController class])];
     vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
     vc.shouldShowCancelButton = YES;
     vc.viewModel.goalPlan = self.planTextView.text;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
+- (IBAction)tapNotificationView:(id)sender {
+    [self cancelNotifications];
+    
+    OGCreateAlertViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
+    vc.viewModel.goalName = self.viewModel.goal.name;
+    vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 
 #pragma mark - UITableViewDelegate
@@ -187,7 +188,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OGDetailDailyRemarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
-    cell.contentLabel.text = @"jnjnjnjnj";
+    cell.contentLabel.text = @"jnjnjnjnjjnjnjnjnjjnjnjnjnjjnjnjnjnjjn";
     return cell;
 }
 

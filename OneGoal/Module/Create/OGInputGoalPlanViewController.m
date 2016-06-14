@@ -35,8 +35,8 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     }
     
     if (_shouldShowCancelButton) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
-        self.nextButton.hidden = YES;
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
+        [self.nextButton setTitle:@"Close" forState:UIControlStateNormal];
         self.textView.text = self.viewModel.goalPlan;
     }else {
         if (self.setUpCompleteBlock) {
@@ -67,6 +67,11 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 
 - (IBAction)nextButtonPressed:(id)sender {
     [self addPlan];
+    
+    if (_shouldShowCancelButton) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
     
     __weak typeof(self) weakSelf = self;
     OGCreateAlertViewController *alertVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];

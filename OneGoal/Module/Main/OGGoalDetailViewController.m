@@ -170,11 +170,10 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 }
 
 - (IBAction)tapNotificationView:(id)sender {
-    [self cancelNotifications];
-    
     OGCreateAlertViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGCreateAlertViewController class])];
     vc.viewModel.goalName = self.viewModel.goal.name;
     vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
+    vc.viewModel.isFromDetailVC = YES;
     [self presentViewController:vc animated:YES completion:nil];
 }
 

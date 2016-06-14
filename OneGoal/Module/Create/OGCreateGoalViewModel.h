@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSDate *goalCreateDate;
 @property (nonatomic, strong) NSString *goalPlan;
 
+@property (nonatomic, assign) BOOL isFromDetailVC;
+
 @end

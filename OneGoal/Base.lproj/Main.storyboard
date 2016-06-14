@@ -302,7 +302,7 @@
                                     <constraint firstAttribute="width" constant="54" id="KlV-Rb-Qsa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" red="0.16862745098039217" green="0.1764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -503,6 +503,20 @@
                                     <constraint firstItem="Oal-dB-y9U" firstAttribute="top" secondItem="7Uw-RI-PHb" secondAttribute="bottom" constant="22" id="zWS-AF-hf8"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAB-g5-9jg">
+                                <rect key="frame" x="249" y="19" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TKf-4R-waB"/>
+                                    <constraint firstAttribute="width" constant="60" id="mEo-Oh-jJh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.16862745100000001" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="yFS-F7-2En" eventType="touchUpInside" id="2wB-UZ-Y9A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.58431372550000005" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -511,19 +525,23 @@
                             <constraint firstItem="04v-RT-LBn" firstAttribute="leading" secondItem="98X-pp-Qla" secondAttribute="leading" constant="133" id="A2Z-Oa-8D6"/>
                             <constraint firstAttribute="trailing" secondItem="Guc-CE-PrB" secondAttribute="trailing" id="Gim-Hq-xKJ"/>
                             <constraint firstItem="Guc-CE-PrB" firstAttribute="top" secondItem="csL-Vm-xtp" secondAttribute="bottom" constant="17" id="LW9-VC-G5e"/>
+                            <constraint firstAttribute="trailing" secondItem="NAB-g5-9jg" secondAttribute="trailing" constant="11" id="Nr4-zm-Php"/>
                             <constraint firstItem="csL-Vm-xtp" firstAttribute="centerX" secondItem="98X-pp-Qla" secondAttribute="centerX" id="Wny-Wb-bub"/>
                             <constraint firstItem="Guc-CE-PrB" firstAttribute="leading" secondItem="98X-pp-Qla" secondAttribute="leading" id="WzB-sm-6je"/>
                             <constraint firstItem="04v-RT-LBn" firstAttribute="top" secondItem="Guc-CE-PrB" secondAttribute="bottom" constant="36" id="a6v-oM-IN5"/>
                             <constraint firstItem="04v-RT-LBn" firstAttribute="top" secondItem="Guc-CE-PrB" secondAttribute="bottom" constant="36" id="awO-dh-IAn"/>
+                            <constraint firstItem="NAB-g5-9jg" firstAttribute="top" secondItem="98X-pp-Qla" secondAttribute="top" constant="19" id="mVi-MM-7fs"/>
                             <constraint firstItem="Guc-CE-PrB" firstAttribute="top" secondItem="csL-Vm-xtp" secondAttribute="bottom" constant="17" id="rvc-up-d2k"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="allButton" destination="sqO-7X-VPG" id="cj2-5Z-Sue"/>
+                        <outlet property="cancelButton" destination="NAB-g5-9jg" id="Xne-sB-RfG"/>
                         <outlet property="datePicker" destination="Guc-CE-PrB" id="QK8-TE-Dzs"/>
                         <outlet property="friButton" destination="Oal-dB-y9U" id="coa-Z1-P8R"/>
                         <outlet property="monButton" destination="7Uw-RI-PHb" id="GGj-NT-3DU"/>
                         <outlet property="satButton" destination="S5e-zY-B0T" id="1GX-Be-iFL"/>
+                        <outlet property="saveButton" destination="04v-RT-LBn" id="XS4-db-iQW"/>
                         <outlet property="sunButton" destination="oIn-bY-nKV" id="htx-Np-oMy"/>
                         <outlet property="thuButton" destination="1aj-HS-StC" id="v5o-kk-Y21"/>
                         <outlet property="tueButton" destination="jSC-lZ-cuS" id="aV5-7N-kUX"/>

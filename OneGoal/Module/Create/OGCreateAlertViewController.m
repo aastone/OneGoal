@@ -23,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *satButton;
 @property (weak, nonatomic) IBOutlet UIButton *sunButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (nonatomic, strong) NSArray<UIButton*> *buttons;
 @property (nonatomic, strong) NSMutableArray *selectedDays;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
@@ -40,6 +42,11 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     self.selectedDays = [NSMutableArray arrayWithCapacity:7];
     
     self.datePicker.timeZone = [NSTimeZone defaultTimeZone];
+    
+    if (!self.viewModel.isFromDetailVC) {
+        self.cancelButton.hidden = YES;
+        [self.saveButton setTitle:@"Next" forState:UIControlStateNormal];
+    }
     
     if (self.setUpCompleteBlock) {
         self.setUpCompleteBlock();
@@ -109,6 +116,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
 
 - (IBAction)doneButtonPressed:(id)sender {
     //另外要设置多个星期，根据上个页面选择的提醒日
+    [self cancelNotifications];
     
     if (self.selectedDays.count) {
         for (NSNumber *day in self.selectedDays) {
@@ -154,13 +162,22 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     }
 }
 
+- (void)cancelNotifications
+{
+    NSArray *arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    
+    for (UILocalNotification *local in arr) {
+        NSDate *info = local.userInfo[kOGGoalNotificationInfo];
+        if ([info isEqualToDate:self.viewModel.goalCreateDate]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:local];
+        }
+    }
+}
 
 
-
-
-
-
-
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 

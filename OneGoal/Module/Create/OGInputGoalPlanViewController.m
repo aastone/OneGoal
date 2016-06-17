@@ -12,6 +12,8 @@
 #import "Goal.h"
 #import "AppDelegate.h"
 #import "OGCoreDataOperation.h"
+#import "NSString+Util.h"
+#import "BSJSONWrapper.h"
 
 @interface OGInputGoalPlanViewController()
 
@@ -35,7 +37,6 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     }
     
     if (_shouldShowCancelButton) {
-//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
         [self.nextButton setTitle:@"Close" forState:UIControlStateNormal];
         self.textView.text = self.viewModel.goalPlan;
     }else {
@@ -58,15 +59,38 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     }];
 }
 
-- (void)saveButtonPressed
+- (void)addDailyRemark
 {
-    [self addPlan];
-    [self.navigationController popViewControllerAnimated:YES];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"createTime == %@", self.viewModel.goalCreateDate];
+    
+    [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate context:self.myAppDelegate.managedObjectContext completion:^(NSError *error, id entity) {
+        if (!error) {
+            Goal *goal = entity;
+            NSMutableArray *newRemark = [NSMutableArray new];
+            if (goal.dailyMark.length) {
+                NSArray *oldRemark = goal.dailyMark.bs_objectFromJSONString;
+                newRemark = [NSMutableArray arrayWithArray:oldRemark];
+            }
+            if (self.viewModel.isAddNewObject) {
+                [newRemark addObject:[NSDictionary dictionaryWithObjectsAndKeys:self.textView.text, kGoalDailyRemarkContentKey, [NSString stringWithFormat:@"%@", [NSDate date]], kGoalDailyRemarkDateKey, nil]];
+            }else {
+                NSDictionary *lastDic = [newRemark objectAtIndex:newRemark.count - 1];
+                NSDictionary *newDic = [NSDictionary dictionaryWithObjectsAndKeys:self.textView.text, kGoalDailyRemarkContentKey, [lastDic objectForKey:kGoalDailyRemarkDateKey], kGoalDailyRemarkDateKey, nil];
+                [newRemark replaceObjectAtIndex:newRemark.count-1 withObject:newDic];
+            }
+            
+            goal.dailyMark = [NSString stringWithFormat:@"%@", newRemark.bs_JSONString];
+            [self.myAppDelegate saveContext];
+        }
+    }];
 }
 
-
 - (IBAction)nextButtonPressed:(id)sender {
-    [self addPlan];
+    if (_isFromDailyRemark) {
+        [self addDailyRemark];
+    }else {
+        [self addPlan];
+    }
     
     if (_shouldShowCancelButton) {
         [self dismissViewControllerAnimated:YES completion:nil];

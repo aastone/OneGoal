@@ -19,6 +19,8 @@
 #import "OGDetailDailyRemarkTableViewCell.h"
 #import "NSNumber+Util.h"
 #import "OGDetailHeaderView.h"
+#import "BSJSONWrapper.h"
+#import "NSString+Util.h"
 
 @interface OGGoalDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
@@ -30,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (nonatomic, strong) UIView *detailHeaderView;
+
+@property (nonatomic, strong) NSArray *dailyRemarks;
 
 @end
 
@@ -76,6 +80,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     
     [self showAllNotifications];
     [self showPlanInfo];
+    [self queryDailyRemarks];
 }
 
 #pragma mark  Notifications
@@ -159,6 +164,20 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     }];
 }
 
+#pragma mark  Daily Remarks
+- (void)queryDailyRemarks
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"createTime == %@", self.viewModel.goal.createTime];
+    [OGCoreDataOperation entityUpdateWithName:[Goal class] predicate:predicate context:self.myAppDelegate.managedObjectContext completion:^(NSError *error, id entity) {
+        if (!error) {
+            Goal *goal = entity;
+            _dailyRemarks = goal.dailyMark.bs_objectFromJSONString;
+            
+            [self.tableView reloadData];
+        }
+    }];
+}
+
 #pragma mark - Actions
 
 - (IBAction)tapPlanTextView:(id)sender {
@@ -181,13 +200,24 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if ([self isTodayRemarkRecorded]) {
+        return self.dailyRemarks.count?:1;
+    }else {
+        return self.dailyRemarks.count+1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OGDetailDailyRemarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
-    cell.contentLabel.text = @"jnjnjnjnjjnjnjnjnjjnjnjnjnjjnjnjnjnjjn";
+    
+    if (_dailyRemarks.count <= indexPath.row || (![self isTodayRemarkRecorded] && indexPath.row == 0)) {
+        cell.contentLabel.text = @"#click here to add remarks";
+    }else {
+        NSDictionary *dic = _dailyRemarks[_dailyRemarks.count - indexPath.row - 1];
+        cell.contentLabel.text = [dic objectForKey:kGoalDailyRemarkContentKey];
+    }
+    
     return cell;
 }
 
@@ -200,6 +230,25 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.row != 0) {
+        return;
+    }
+    
+    NSString *text = @"#click here to add remarks";
+    if ((_dailyRemarks.count > indexPath.row) && [self isTodayRemarkRecorded]) {
+        NSDictionary *dic = _dailyRemarks[_dailyRemarks.count - indexPath.row - 1];
+        text = [dic objectForKey:kGoalDailyRemarkContentKey];
+    }
+    
+    OGInputGoalPlanViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([OGInputGoalPlanViewController class])];
+    vc.viewModel.goalCreateDate = self.viewModel.goal.createTime;
+    vc.shouldShowCancelButton = YES;
+    vc.isFromDailyRemark = YES;
+    vc.viewModel.goalPlan = text;
+    if (![self isTodayRemarkRecorded]) {
+        vc.viewModel.isAddNewObject = YES;
+    }
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -212,7 +261,19 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     return 100;
 }
 
-
+- (BOOL)isTodayRemarkRecorded
+{
+    if (_dailyRemarks.count) {
+        NSDictionary *dic = _dailyRemarks[0];
+        NSString *dateStr = [dic objectForKey:kGoalDailyRemarkDateKey];
+        NSString *currentDate = [NSDate date].dateString;
+        
+        if ([dateStr containsString:currentDate]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 
 

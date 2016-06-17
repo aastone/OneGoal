@@ -10,6 +10,9 @@
 
 @class OGCreateGoalViewModel;
 
+static const NSString *kGoalDailyRemarkContentKey = @"kGoalDailyRemarkContentKey";
+static const NSString *kGoalDailyRemarkDateKey = @"kGoalDailyRemarkDateKey";
+
 @interface OGInputGoalPlanViewController : BSBaseViewController
 
 DECLARE_VIEWMODEL(OGCreateGoalViewModel)
@@ -17,5 +20,7 @@ DECLARE_VIEWMODEL(OGCreateGoalViewModel)
 @property (nonatomic, copy) dispatch_block_t setUpCompleteBlock;
 
 @property (nonatomic, assign) BOOL shouldShowCancelButton;
+
+@property (nonatomic, assign) BOOL isFromDailyRemark;
 
 @end

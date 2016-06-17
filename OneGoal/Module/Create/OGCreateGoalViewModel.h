@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *goalPlan;
 
 @property (nonatomic, assign) BOOL isFromDetailVC;
+@property (nonatomic, assign) BOOL isAddNewObject;
 
 @end

@@ -11,6 +11,10 @@
 
 static NSString *const kOGGoalNotificationInfo = @"kOGGoalNotificationInfo";
 static NSString *const kOGGoalNotificationDetailInfo = @"kOGGoalNotificationDetailInfo";
+static NSString *const kOGGoalDetailRemarkReloadNotification = @"kOGGoalDetailRemarkReloadNotification";
+static NSString *const kOGGoalDetailPlanReloadNotification = @"kOGGoalDetailPlanReloadNotification";
+static NSString *const kOGGoalDetailAlertReloadNotification = @"kOGGoalDetailAlertReloadNotification";
+
 
 typedef enum : NSUInteger {
     OGGoalStatusOngoing     = 1,

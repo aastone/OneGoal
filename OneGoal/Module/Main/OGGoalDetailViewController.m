@@ -21,6 +21,7 @@
 #import "OGDetailHeaderView.h"
 #import "BSJSONWrapper.h"
 #import "NSString+Util.h"
+#import "ReactiveCocoa.h"
 
 @interface OGGoalDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *notificationInfoLabel;
@@ -58,6 +59,28 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGDetailDailyRemarkTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGDetailDailyRemarkTableViewCell class])];
 }
 
+- (void)registeNotifications
+{
+    @weakify(self);
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kOGGoalDetailRemarkReloadNotification object:nil] subscribeNext:^(NSNotification *note) {
+        @strongify(self);
+        NSString *str = note.object;
+        _dailyRemarks = str.bs_objectFromJSONString;
+        [self.tableView reloadData];
+    }];
+    
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kOGGoalDetailPlanReloadNotification object:nil] subscribeNext:^(NSNotification *note) {
+        @strongify(self);
+        NSString *str = note.object;
+        self.planTextView.text = str.length?str:@"#You can write your plan here.";
+    }];
+    
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:kOGGoalDetailAlertReloadNotification object:nil] subscribeNext:^(NSNotificationCenter *note) {
+        @strongify(self);
+        [self showAllNotifications];
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -81,6 +104,7 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
     [self showAllNotifications];
     [self showPlanInfo];
     [self queryDailyRemarks];
+    [self registeNotifications];
 }
 
 #pragma mark  Notifications

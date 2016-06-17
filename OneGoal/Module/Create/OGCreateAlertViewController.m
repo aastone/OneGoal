@@ -125,7 +125,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
     }else {
         [self weeklyNotification:nil];
     }
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kOGGoalDetailAlertReloadNotification object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -14,6 +14,7 @@
 #import "OGCoreDataOperation.h"
 #import "NSString+Util.h"
 #import "BSJSONWrapper.h"
+#import "OGConfig.h"
 
 @interface OGInputGoalPlanViewController()
 
@@ -54,6 +55,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
         if (!error) {
             Goal *goal = entity;
             goal.plan = self.textView.text;
+            [[NSNotificationCenter defaultCenter] postNotificationName:kOGGoalDetailPlanReloadNotification object:self.textView.text];
             [self.myAppDelegate saveContext];
         }
     }];
@@ -80,6 +82,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
             }
             
             goal.dailyMark = [NSString stringWithFormat:@"%@", newRemark.bs_JSONString];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kOGGoalDetailRemarkReloadNotification object:newRemark.bs_JSONString];
             [self.myAppDelegate saveContext];
         }
     }];

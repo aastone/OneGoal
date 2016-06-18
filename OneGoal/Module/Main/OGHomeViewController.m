@@ -42,15 +42,15 @@ DECLARE_VIEWMODEL_GETTER(OGHomeViewModel)
         self.myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     
-    self.navigationItem.title = @"Goal 1";
+    self.navigationItem.title = @"Goal";
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OGHomeTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([OGHomeTableViewCell class])];
     
-    WEAK_SELF
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf refreshTableView];
-        [weakSelf.tableView.pullToRefreshView stopAnimating];
-    }];
+//    WEAK_SELF
+//    [self.tableView addPullToRefreshWithActionHandler:^{
+//        [weakSelf refreshTableView];
+//        [weakSelf.tableView.pullToRefreshView stopAnimating];
+//    }];
     
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = UITableViewAutomaticDimension;

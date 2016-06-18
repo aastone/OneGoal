@@ -45,6 +45,7 @@ DECLARE_VIEWMODEL_GETTER(OGCreateGoalViewModel)
             self.setUpCompleteBlock();
         }
     }
+    [self.textView becomeFirstResponder];
 }
 
 - (void)addPlan
